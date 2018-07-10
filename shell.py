@@ -13,7 +13,7 @@ def name_of_next():
 
 def pick_class():
     print()
-    print('1.Warrior\n2.Healer\n3.Loser')
+    print('1.Warrior\n2.Knight\n3.Loser\n4.Mage\n')
     while True:
         class_type = input('Pick your class type number >>> ')
         if class_type == '1':
@@ -22,12 +22,14 @@ def pick_class():
             return new_gladiator(120, 50, 8, 16)
         elif class_type == '3':
             return new_gladiator(30, 0, 1, 2)
+        elif class_type == '4':
+            return new_gladiator(100, 100, 6, 14)
         else:
             print('Come on dude, just pick a type.')
 
 
 def print_moves():
-    print('~~1.Attack\n~~2.Heal\n~~3.Quit\n~~4.Pass\n')
+    print('~~1.Attack\n~~2.Heal\n~~3.Pass\n~~4.Quit\n')
 
 
 def player_one_fight(player_1, player_2, name_1, name_2):
@@ -40,9 +42,10 @@ def player_one_fight(player_1, player_2, name_1, name_2):
             return attack(player_1, player_2)
         elif response == '2':
             return heal(player_1)
-        elif response == '3':
-            break
         elif response == '4':
+            print('Wow you just let player Two win')
+            exit()
+        elif response == '3':
             player_1['Rage'] = player_1['Rage'] + 30
             return None
 
@@ -53,16 +56,17 @@ def player_one_fight(player_1, player_2, name_1, name_2):
 def player_two_fight(player_1, player_2, name_1, name_2):
     while True:
         response = input(
-            'What would you like to do {}?\nPlease use 1, 2, 3, or 4 to answer.>>> '.
+            'What would you like to do {}?\nPlease use 1, 2, 3, or 4 to answer >>> '.
             format(name_2))
         print_moves()
         if response == '1':
-            attack(player_2, player_1)
+            return attack(player_2, player_1)
         elif response == '2':
             return heal(player_2)
-        elif response == '3':
-            break
         elif response == '4':
+            print('Wow, you just let player one win.')
+            exit()
+        elif response == '3':
             player_2['Rage'] = player_2['Rage'] + 30
             return None
         else:
