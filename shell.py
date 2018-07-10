@@ -11,6 +11,21 @@ def name_of_next():
     return name
 
 
+def pick_class():
+    print()
+    print('1.Warrior\n2.Healer\n3.Loser')
+    while True:
+        class_type = input('Pick your class type number >>> ')
+        if class_type == '1':
+            return new_gladiator(100, 40, 10, 20)
+        elif class_type == '2':
+            return new_gladiator(120, 50, 8, 16)
+        elif class_type == '3':
+            return new_gladiator(30, 0, 1, 2)
+        else:
+            print('Come on dude, just pick a type.')
+
+
 def print_moves():
     print('~~1.Attack\n~~2.Heal\n~~3.Quit\n~~4.Pass\n')
 
@@ -18,7 +33,7 @@ def print_moves():
 def player_one_fight(player_1, player_2, name_1, name_2):
     while True:
         response = input(
-            'What would you like to do {}? Please use 1, 2, 3, or 4 to answer.>>> '.
+            'What would you like to do {}?\nPlease use 1, 2, 3, or 4 to answer.>>> '.
             format(name_1))
         print_moves()
         if response == '1':
@@ -38,7 +53,7 @@ def player_one_fight(player_1, player_2, name_1, name_2):
 def player_two_fight(player_1, player_2, name_1, name_2):
     while True:
         response = input(
-            'What would you like to do {}? Please use 1, 2, 3, or 4 to answer.>>> '.
+            'What would you like to do {}?\nPlease use 1, 2, 3, or 4 to answer.>>> '.
             format(name_2))
         print_moves()
         if response == '1':
@@ -55,8 +70,10 @@ def player_two_fight(player_1, player_2, name_1, name_2):
 
 
 def player_stats(player_1, player_2, name_1, name_2):
-    print('{}:\n{}\n{}\n'.format(name_1, player_1['Health'], player_1['Rage']))
-    print('{}:\n{}\n{}\n'.format(name_2, player_2['Health'], player_2['Rage']))
+    print("^^^^^\n{}'s stats:\nHealth: {}\nRage: {}\n^^^^^\n".format(
+        name_1, player_1['Health'], player_1['Rage']))
+    print("^^^^^\n{}'s stats:\nHealth: {}\nRage: {}\n^^^^^".format(
+        name_2, player_2['Health'], player_2['Rage']))
 
 
 def battle_phase_1(player_1, player_2, name_1, name_2):
@@ -99,8 +116,8 @@ def victor(gladiator, gladiator_2, name_1, name_2):
 def main():
     name_1 = name()
     name_2 = name_of_next()
-    player_1 = new_gladiator(100, 0, 10, 20)
-    player_2 = new_gladiator(100, 0, 10, 20)
+    player_1 = pick_class()
+    player_2 = pick_class()
     victor(player_1, player_2, name_1, name_2)
 
 
