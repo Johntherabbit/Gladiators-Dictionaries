@@ -69,10 +69,13 @@ def player_one_fight(player_1, player_2, name_1, name_2):
             format(name_1))
         if response == '1':
             print("{} uses an attack".format(name_1))
+            print('END OF TURN')
+            print()
             return attack(player_1, player_2)
         elif response == '2':
             if player_1['Power'] >= 10:
                 print("{} has healed themself".format(name_1))
+                print('END OF TURN\n')
                 return heal(player_1)
             else:
                 print('Not enough power')
@@ -81,12 +84,14 @@ def player_one_fight(player_1, player_2, name_1, name_2):
             exit()
         elif response == '3':
             print("{} has skipped their turn".format(name_1))
+            print()
             player_1['Rage'] = player_1['Rage'] + 30
             player_1['Power'] += 30
             return None
         elif response == '5':
             if player_1['Power'] > 45:
                 print('{} used their special attack'.format(name_1))
+                print("END OF TURN")
                 return special_move(player_1, player_2)
             else:
                 print('Not enough power')
@@ -103,10 +108,12 @@ def player_two_fight(player_1, player_2, name_1, name_2):
         print_moves()
         if response == '1':
             print("{} uses an attack.".format(name_2))
+            print('END OF TURN')
             return attack(player_2, player_1)
         elif response == '2':
             if player_2['Power'] >= 10:
                 print('{} has healed themself'.format(name_2))
+                print('END OF TURN')
                 return heal(player_2)
             else:
                 print('Not enough power')
@@ -117,10 +124,13 @@ def player_two_fight(player_1, player_2, name_1, name_2):
             print("{} has skipped their turn".format(name_2))
             player_2['Rage'] = player_2['Rage'] + 30
             player_2['Power'] += 30
+            print('END OF TURN')
             return None
         elif response == '5':
             if player_2['Power'] >= 45:
                 print("{} used their special attack".format(name_2))
+                print('END OF TURN')
+                print()
                 return special_move(player_2, player_1)
             else:
                 print('Not enough power')
@@ -144,12 +154,14 @@ def battle_phase_1(player_1, player_2, name_1, name_2):
     player_stats(player_1, player_2, name_1, name_2)
     print_moves()
     player_one_fight(player_1, player_2, name_1, name_2)
+    print('..............................')
 
 
 def battle_phase_2(player_1, player_2, name_1, name_2):
     player_stats(player_1, player_2, name_1, name_2)
     print_moves()
     player_two_fight(player_1, player_2, name_1, name_2)
+    print('..............................')
 
 
 def victor(gladiator, gladiator_2, name_1, name_2):
