@@ -24,7 +24,7 @@ def player_enemy():
     elif class_type == 3:  #Common Man
         return new_gladiator(70, 0, 3, 6, 0, 3)
     elif class_type == 4:  #healer
-        return new_gladiator(100, 0, 6, 15, 45, 1)
+        return new_gladiator(100, 0, 6, 15, 15, 1)
     elif class_type == 5:  #Thief
         return new_gladiator(100, 0, 7, 18, 15, 5)
 
@@ -39,10 +39,12 @@ def player_battle(name, hero, enemy, enemy_name):
         print_moves()
         if response == '1':
             print("{} uses an attack".format(name))
+            print("END OF TURN\n")
             return attack(hero, enemy)
         elif response == '2':
             if hero['Power'] >= 10:
                 print("{} has healed themself".format(name))
+                print('END OF TURN\n')
                 return heal(hero)
             else:
                 print('Not enough power')
@@ -51,12 +53,14 @@ def player_battle(name, hero, enemy, enemy_name):
             exit()
         elif response == '3':
             print("{} has skipped their turn".format(name))
+            print('END OF TURN')
             hero['Rage'] = hero['Rage'] + 30
             hero['Power'] += 30
             return None
         elif response == '5':
             if hero['Power'] > 44:
                 print('{} used their special attack'.format(name))
+                print('END OF TURN\n')
                 return special_move(hero, enemy)
             else:
                 print('Not enough power')
@@ -73,25 +77,29 @@ def enemy_battle(enemy_name, enemy, hero):
         response = choice([1, 1, 1, 2, 2, 3, 5])
         if response == 1:
             print("{} uses an attack".format(enemy_name))
+            print('END OF TURN\n')
             return attack(enemy, hero)
         elif response == 2:
             if enemy['Power'] >= 10:
                 print("{} has healed themself".format(enemy_name))
+                print('END OF TURN\n')
                 return heal(enemy)
             else:
                 print('Not enough power')
         elif response == 3:
             print("{} has skipped their turn".format(enemy_name))
+            print('END OF TURN\n')
             enemy['Rage'] = enemy['Rage'] + 30
             enemy['Power'] += 30
             return None
         elif response == 5:
             if enemy['Power'] > 44:
                 print('{} used their special attack'.format(enemy_name))
+                print('END OF TURN\n')
                 return special_move(hero, enemy)
             else:
                 print('Not enough power')
-        print('{} has finished.'.format(enemy_name))
+        print()
 
 
 def game_winner(hero, name, names):
@@ -124,6 +132,8 @@ def game_winner(hero, name, names):
 def next_round(hero, name, names):
     if len(names) > 0:
         print('You advance to the next boss')
+        print('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        print()
         return game_winner(hero, name, names)
     else:
         print('You have beaten all the bosses')
