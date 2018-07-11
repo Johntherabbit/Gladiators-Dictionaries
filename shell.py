@@ -48,7 +48,7 @@ def pick_class():
         elif class_type == '3':  #Common Man
             return new_gladiator(70, 0, 3, 6, 0, 3)
         elif class_type == '4':  #healer
-            return new_gladiator(100, 0, 6, 15, 45, 1)
+            return new_gladiator(100, 0, 6, 15, 15, 1)
         elif class_type == '5':  #Thief
             return new_gladiator(100, 0, 7, 18, 15, 5)
         else:
