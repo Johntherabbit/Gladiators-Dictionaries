@@ -89,7 +89,7 @@ def player_one_fight(player_1, player_2, name_1, name_2):
             player_1['Power'] += 30
             return None
         elif response == '5':
-            if player_1['Power'] > 45:
+            if player_1['Power'] > 44:
                 print('{} used their special attack'.format(name_1))
                 print("END OF TURN")
                 return special_move(player_1, player_2)
