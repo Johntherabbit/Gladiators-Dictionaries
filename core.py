@@ -25,10 +25,12 @@ def attack(attacker, defender):
         defender['Health'] = crit_damage
         attacker['Rage'] = 0
         attacker['Power'] += 30
+        return defender['Health']
     elif attacker['Rage'] < critical:
         defender['Health'] = damage
         attacker['Rage'] = attacker['Rage'] + 15
         attacker['Power'] += 15
+        return defender['Health']
 
 
 def heal(gladiator):
@@ -61,30 +63,36 @@ def is_dead(gladiator):
 
 def special_move(gladiator, gladiator_2):
     if gladiator['Special'] == 1:
-        if gladiator['Power'] >= 45:
-            gladiator['Health'] += randint(25, 50)
-            gladiator['Power'] -= 50
-        return gladiator
+        if gladiator['Power'] > 44:
+            gladiator['Health'] += randint(30, 50)
+            gladiator['Power'] -= 45
+            gladiator['Rage'] += 25
+            return gladiator
     elif gladiator['Special'] == 2:
-        if gladiator['Power'] >= 45:
+        if gladiator['Power'] > 44:
             gladiator_2['Health'] -= 45
             gladiator['Power'] = gladiator['Power'] - 50
-        return gladiator
+            return gladiator
     elif gladiator['Special'] == 3:
         if gladiator['Power'] >= 45:
             gladiator['Health'] -= gladiator['Health']
-        return gladiator
+            return gladiator
     elif gladiator['Special'] == 4:
-        if gladiator['Power'] >= 45:
+        if gladiator['Power'] >= 44:
             gladiator_2['Power'] = 0
             gladiator['Power'] -= 45
-        return gladiator
+            return gladiator
     elif gladiator['Special'] == 5:
-        if gladiator['Power'] >= 45:
-            gladiator_2['Power'] -= 30
-            gladiator_2['Rage'] -= 30
-            gladiator_2['Health'] -= 30
-            gladiator['Power'] += 30
-            gladiator['Rage'] += 30
-            gladiator['Health'] += 30
+        if gladiator['Power'] >= 44:
+            gladiator['Power'] -= 45
+            gladiator_2['Power'] -= 20
+            gladiator_2['Rage'] -= 20
+            gladiator['Power'] += 20
+            gladiator['Rage'] += 20
+            if gladiator_2['Power'] <= 0:
+                gladiator_2['Power'] = 0
+                return gladiator_2
+            if gladiator_2['Rage'] <= 0:
+                gladiator_2['Rage'] <= 0
+                return gladiator_2
         return gladiator
