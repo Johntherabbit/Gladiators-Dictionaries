@@ -1,7 +1,8 @@
 from core import *
+from singleplayer import *
 
 
-def name():
+def hero_name():
     name = input('What is the name of player one? >>> ')
     return name
 
@@ -23,19 +24,19 @@ def pick_class():
     print()
     print('-----CHARACTERS-----')
     print(
-        '1.Warrior\nHe is a strong character with average health.\nHis special ability is called slash in which he causes high damage to his opponent.'
+        '1.Warrior\nHe is a strong character with average health.\nHis special ability is called slash in which he causes high damage to his opponent.\n'
     )
     print(
-        '2. King\nThe king has high health to match his high status.\nWith his power he can take power from his opponents.'
+        '2. King\nThe king has high health to match his high status.\nWith his power he can take power from his opponents.\n'
     )
     print(
-        '3.Common Man\nHe is just a man.\nDon\'t use this scared man\'s ability.'
+        '3.Common Man\nHe is just a man.\nDon\'t use this scared man\'s ability.\n'
     )
     print(
-        '4.Healer\nThis mage has may have weaker attacks but starts with high power\nThe ability of powerful healing can be used to outlast his enemy\'s in battle.'
+        '4.Healer\nThis mage has may have weaker attacks but starts with high power\nThe ability of powerful healing can be used to outlast his enemy\'s in battle.\n'
     )
     print(
-        '5.Thief\nWith his sneaky ways, other character\'s stats can be used to his ability.\nHis special ability allows him to steal stats from his opponent and add to his own.'
+        '5.Thief\nWith his sneaky ways, other character\'s stats can be used to his ability.\nHis special ability allows him to steal stats from his opponent and add to his own.\n'
     )
     print()
     while True:
@@ -66,7 +67,6 @@ def player_one_fight(player_1, player_2, name_1, name_2):
         response = input(
             'What would you like to do {}?\nPlease use 1 - 5 to answer >>> '.
             format(name_1))
-        print_moves()
         if response == '1':
             print("{} uses an attack".format(name_1))
             return attack(player_1, player_2)
@@ -129,11 +129,15 @@ def player_two_fight(player_1, player_2, name_1, name_2):
 
 
 def player_stats(player_1, player_2, name_1, name_2):
+    print()
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     print(
         "^^^^^\n{}'s stats:\nHealth: {}\nRage: {}\nPower: {}\n^^^^^\n".format(
             name_1, player_1['Health'], player_1['Rage'], player_1['Power']))
     print("^^^^^\n{}'s stats:\nHealth: {}\nRage: {}\nPower: {}\n^^^^^".format(
         name_2, player_2['Health'], player_2['Rage'], player_2['Power']))
+    print('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    print()
 
 
 def battle_phase_1(player_1, player_2, name_1, name_2):
@@ -173,12 +177,33 @@ def victor(gladiator, gladiator_2, name_1, name_2):
             victor()
 
 
+def singleplayer_or_multiplayer():
+    while True:
+        response = input(
+            'Singleplayer Survival or Multiplayer?\nPlease use single or multi as response\n >>> '
+        )
+        if response.lower().strip() == 'multi':
+            name_1 = hero_name()
+            name_2 = name_of_next()
+            player_1 = pick_class()
+            player_2 = pick_class()
+            victor(player_1, player_2, name_1, name_2)
+            break
+        elif response.lower().strip() == 'single':
+            names = [
+                'Ching Ching', 'Ricky Bobby the Destroyer', 'Lil Wayne',
+                'Single Pringle', 'Saint Nick', 'Barbie'
+            ]
+            name = player_name()
+            hero = pick_class()
+            game_winner(hero, name, names)
+            break
+        else:
+            print('Please enter singleplayer or multiplayer')
+
+
 def main():
-    name_1 = name()
-    name_2 = name_of_next()
-    player_1 = pick_class()
-    player_2 = pick_class()
-    victor(player_1, player_2, name_1, name_2)
+    singleplayer_or_multiplayer()
 
 
 if __name__ == '__main__':
