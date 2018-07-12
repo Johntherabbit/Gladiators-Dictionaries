@@ -71,7 +71,7 @@ def special_move(gladiator, gladiator_2):
     elif gladiator['Special'] == 2:
         if gladiator['Power'] > 44:
             gladiator_2['Health'] -= 45
-            gladiator['Power'] = gladiator['Power'] - 50
+            gladiator['Power'] = gladiator['Power'] - 45
             return gladiator
     elif gladiator['Special'] == 3:
         if gladiator['Power'] >= 45:
@@ -95,4 +95,22 @@ def special_move(gladiator, gladiator_2):
             if gladiator_2['Rage'] <= 0:
                 gladiator_2['Rage'] <= 0
                 return gladiator_2
+    elif gladiator['Special'] == 6:
+        if gladiator['Power'] >= 45:
+            gladiator_2['Health'] -= 20
+            gladiator['Health'] += 20
+            gladiator['Power'] -= 45
         return gladiator
+
+
+def name_of_class(gladiator):
+    if gladiator == new_gladiator(100, 30, 10, 20, 0, 2):
+        return 'Warrior'
+    elif gladiator == new_gladiator(120, 50, 8, 16, 0, 4):
+        return 'King'
+    elif gladiator == new_gladiator(70, 0, 3, 6, 0, 3):
+        return 'Common man'
+    elif gladiator == new_gladiator(100, 0, 6, 15, 15, 1):
+        return 'Healer'
+    elif gladiator == new_gladiator(100, 0, 7, 18, 15, 5):
+        return 'Thief'
