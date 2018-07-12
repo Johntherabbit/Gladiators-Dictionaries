@@ -12,15 +12,7 @@ def name_of_next():
     return name
 
 
-def pick_class():
-    #gladiator = {                      specials:
-    #    'Health': health,              1 = healing
-    #    'Rage': rage,                  2 = slash
-    #    'Damage Low': damage_low,      3 = suicide
-    #    'Damage High': damage_high,    4 = power erase
-    #    'Magic': magic                 5 = steal
-    #    'Special': special
-    #}
+def print_characters():
     print()
     print('-----CHARACTERS-----')
     print(
@@ -38,9 +30,24 @@ def pick_class():
     print(
         '5.Thief\nWith his sneaky ways, other character\'s stats can be used to his ability.\nHis special ability allows him to steal stats from his opponent and add to his own.\n'
     )
+    print(
+        '6.Vampire\nThis undead demon starts with a little rage a power to go well with his powerful attacks\nThe Vampire has the ability to suck health from their opponent and add to their own.\n'
+    )
     print()
+
+
+def pick_class():
+    #gladiator = {                      specials:
+    #    'Health': health,              1 = healing
+    #    'Rage': rage,                  2 = slash
+    #    'Damage Low': damage_low,      3 = suicide
+    #    'Damage High': damage_high,    4 = power erase
+    #    'Magic': magic                 5 = steal
+    #    'Special': special
+    #}
+    print_characters()
     while True:
-        class_type = input('Pick your class type number >>> ')
+        class_type = input('Pick your class type number >>> ').strip()
         if class_type == '1':  #warrior
             return new_gladiator(100, 30, 10, 20, 0, 2)
         elif class_type == '2':  #king
@@ -51,6 +58,8 @@ def pick_class():
             return new_gladiator(100, 0, 6, 15, 15, 1)
         elif class_type == '5':  #Thief
             return new_gladiator(100, 0, 7, 18, 15, 5)
+        elif class_type == '6':  #Vampire
+            return new_gladiator(100, 15, 8, 17, 15, 6)
         else:
             print('Come on dude, just pick a type.')
     print('-----')
