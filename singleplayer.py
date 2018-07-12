@@ -16,7 +16,7 @@ def make_enemy_name(names):
 
 
 def player_enemy():
-    class_type = randrange(1, 6)
+    class_type = randrange(1, 7)
     if class_type == 1:  #warrior
         return new_gladiator(100, 30, 10, 20, 0, 2)
     elif class_type == 2:  #king
@@ -27,6 +27,8 @@ def player_enemy():
         return new_gladiator(100, 0, 6, 15, 15, 1)
     elif class_type == 5:  #Thief
         return new_gladiator(100, 0, 7, 18, 15, 5)
+    elif class_type == 6:  # Vampire
+        return new_gladiator(100, 15, 8, 17, 15, 6)
 
 
 def player_battle(name, hero, enemy, enemy_name):
